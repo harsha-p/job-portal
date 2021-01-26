@@ -161,9 +161,11 @@ export default class Viewemps extends Component {
               // console.log("V",v);
               axios.get('http://localhost:4000/job/'+app.job)
               .then(job=>{
-                v.job=job.data;
-                last.push(v);
-                this.setState({applications:[...last]});
+                if(job.data!==null){
+                  v.job=job.data;
+                  last.push(v);
+                  this.setState({applications:[...last]});
+                }
               })
               .catch(err=>console.log(err));
             }
